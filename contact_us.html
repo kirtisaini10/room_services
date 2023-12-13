@@ -1,0 +1,53 @@
+{% include 'navigation.html' %}
+
+<marquee behavior="alternate" style="margin-top:10px;background:black;color:white;font-family:mv boli;">
+    Contact US
+</marquee>
+
+<form action="" method="post">
+    {% csrf_token %}
+    <div class="container">
+        <div class="row">
+            <div class="col-2"></div>
+            <div class="col-8 mt-3" style="border:3px solid black;border-radius:20px;padding:20px;">
+                <lable style="font-weight:bold;">Full Name:</lable>
+                <input type="text" class="form-control" name="fname" placeholder="Write your full Name">
+                <lable style="font-weight:bold;">Email:</lable>
+                <input type="email" class="form-control" name="email" placeholder="Write your Email">
+                <lable style="font-weight:bold;">Contact Number:</lable>
+                <input type="text" class="form-control" name="mobile" placeholder="Write your mobile number">
+                <lable style="font-weight:bold;">Purpose:</lable>
+                <input type="text" class="form-control" name="comment" placeholder="Comment....">
+                <center>
+                    <a href="{% url 'index' %}" class="btn btn-secondary btn-lg mt-3">Cancel</a>  <input type="submit" class="btn btn-primary btn-lg mt-3">
+                </center>
+            </div>
+            <div class="col-2"></div>
+        </div>
+    </div>
+</form>
+
+
+{% if error == "no" %}
+<script>
+    alert("Contact Detail Submitted Successfully")
+    window.location=('{% url 'index' %}')
+</script>
+{% endif %}
+
+{% if error == "yes" %}
+<script>
+    alert("Something Went wrong Try again...")
+    window.location=('{% url 'contact_us' %}')
+</script>
+{% endif %}
+
+
+
+
+
+
+
+
+
+{% include 'footer.html' %}

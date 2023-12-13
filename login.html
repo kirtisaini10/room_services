@@ -1,0 +1,44 @@
+{% include 'navigation.html' %}
+<form action="" method="post">
+{% csrf_token %}
+
+    <div class="container mt-4" >
+    <div class="row">
+        <div class="col-3"></div>
+        <div class="col-7" style="border:2px solid black;border-radius:20px;padding:15px;">
+        <label >Username:</label>
+        <input type="text" class="form-control" name="uname" required placeholder="Enter Username here">
+        <label>Password:</label>
+        <input type="password" class="form-control" name="pswd" required placeholder="Enter Password">
+        <center>
+        <input type="submit" value="Login" class="btn btn-primary" style="margin-top:30px;width:200px; height:50px;font-size:30px;">
+            </center>
+        </div>
+    </div>
+    </div>
+</form>
+{% if error == "no" %}
+<script>
+    alert("Admin Login Successfully")
+    window.location=('{% url 'admin_home' %}')
+</script>
+{% endif %}
+
+{% if error == "not" %}
+<script>
+    alert("User Login Successfully")
+    window.location=('{% url 'user_home' %}')
+</script>
+{% endif %}
+
+{% if error == "yes" %}
+<script>
+    alert("Username Password Does not match. Try Again...")
+    window.location=('{% url 'login' %}')
+</script>
+{% endif %}
+
+
+
+
+{% include 'footer.html' %}
